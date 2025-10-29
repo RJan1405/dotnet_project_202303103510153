@@ -1,0 +1,46 @@
+@model IEnumerable<EventTicketingSystem.Models.Event>
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center my-4">
+        <h1>Event Management</h1>
+        <a asp-action="CreateEvent" class="btn btn-primary">
+            <i class="bi bi-plus-circle"></i> Create New Event
+        </a>
+    </div>
+    
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>Registration Deadline</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Title</td>
+                        <td>@item.Date.ToString("dd/MM/yyyy")</td>
+                        <td>@item.RegistrationDeadline.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>$@item.Price.ToString("0.00")</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a asp-action="EditEvent" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Edit</a>
+                                <a asp-action="EventRegistrations" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info">Registrations</a>
+                                <a asp-action="DeleteEvent" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

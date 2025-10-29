@@ -1,0 +1,155 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+<!-- Home Index.cshtml -->
+
+<div class="container py-5 animate-fade-in">
+    <!-- Hero -->
+    <div class="card gradient-card mb-4">
+        <div class="card-body py-5 text-center">
+            <h1 class="display-5 mb-3">Event Ticketing System</h1>
+            <p class="lead mb-4">
+                Discover events, register seamlessly, pay securely, and receive instant email confirmations.
+            </p>
+            <div class="d-flex justify-content-center gap-3">
+                <a class="btn btn-primary btn-lg" href="@Url.Action("Index", "Event")">Browse Events</a>
+                <a class="btn btn-outline-primary btn-lg" href="@Url.Action("MyTickets", "Event")">My Tickets</a>
+                <a class="btn btn-secondary btn-lg" href="@Url.Action("EmailTickets", "Registration")">Mail Inbox</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="row g-4 mb-4">
+        <div class="col-md-4">
+            <div class="card glass h-100">
+                <div class="card-body">
+                    <h5 class="card-title gradient-text">Register Fast</h5>
+                    <p class="card-text">Pick an event and complete registration in a few clicks.</p>
+                    <a class="btn btn-primary" href="@Url.Action("Index", "Event")">Find Events</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card glass h-100">
+                <div class="card-body">
+                    <h5 class="card-title gradient-text">Secure Payments</h5>
+                    <p class="card-text">Pay with Razorpay and get instant confirmation emails.</p>
+                    <a class="btn btn-info" href="@Url.Action("Index", "Event")">Start Payment</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card glass h-100">
+                <div class="card-body">
+                    <h5 class="card-title gradient-text">Your Inbox</h5>
+                    <p class="card-text">View all ticket emails and resend confirmations anytime.</p>
+                    <a class="btn btn-secondary" href="@Url.Action("EmailTickets", "Registration")">Open Mail</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feature Highlights -->
+    <div class="row g-4 mb-4">
+        <div class="col-md-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="badge-modern mb-2">Fast</div>
+                    <h6 class="mb-2">Quick Registration</h6>
+                    <p class="text-muted mb-0">Register and pay in minutes with a clean UI.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="badge-modern mb-2">Secure</div>
+                    <h6 class="mb-2">Razorpay Integration</h6>
+                    <p class="text-muted mb-0">Reliable payment flow with receipt emails.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="badge-modern mb-2">Smart</div>
+                    <h6 class="mb-2">Mail Inbox</h6>
+                    <p class="text-muted mb-0">All your tickets organized with resend support.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="badge-modern mb-2">Admin</div>
+                    <h6 class="mb-2">Event Management</h6>
+                    <p class="text-muted mb-0">Create, edit, export reports and track registrations.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Events (static showcase) -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="card h-100 animate-slide-up">
+                <div class="card-body">
+                    <h5 class="card-title">UTU Dance Competition</h5>
+                    <p class="text-muted mb-2">Sat, 01 Nov 2025</p>
+                    <p>Join the best dancers and compete live on stage.</p>
+                    <div class="d-flex gap-2">
+                        <a class="btn btn-outline-primary" href="@Url.Action("Index", "Event")">View</a>
+                        <a class="btn btn-primary" href="@Url.Action("Index", "Event")">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 animate-slide-up">
+                <div class="card-body">
+                    <h5 class="card-title">Hackathon 2025</h5>
+                    <p class="text-muted mb-2">Fri, 14 Nov 2025</p>
+                    <p>Build innovative solutions and win prizes with your team.</p>
+                    <div class="d-flex gap-2">
+                        <a class="btn btn-outline-primary" href="@Url.Action("Index", "Event")">View</a>
+                        <a class="btn btn-primary" href="@Url.Action("Index", "Event")">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 animate-slide-up">
+                <div class="card-body">
+                    <h5 class="card-title">Tech Conference</h5>
+                    <p class="text-muted mb-2">Sun, 30 Nov 2025</p>
+                    <p>Learn from industry leaders across tech and product.</p>
+                    <div class="d-flex gap-2">
+                        <a class="btn btn-outline-primary" href="@Url.Action("Index", "Event")">View</a>
+                        <a class="btn btn-primary" href="@Url.Action("Index", "Event")">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin shortcuts (visible to Admin role) -->
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="card glass mb-5">
+            <div class="card-body d-flex flex-wrap align-items-center justify-content-between">
+                <div>
+                    <h5 class="mb-2 gradient-text">Admin Shortcuts</h5>
+                    <p class="text-muted mb-0">Manage events and export registrations.</p>
+                </div>
+                <div class="d-flex gap-2">
+                    <a class="btn btn-secondary" href="@Url.Action("Index", "Admin")">Admin Dashboard</a>
+                    <a class="btn btn-primary" href="@Url.Action("CreateEvent", "Admin")">Create Event</a>
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- Floating Action Button -->
+    <a class="fab" href="@Url.Action("Index", "Event")" title="Browse Events">🎟️</a>
+</div>

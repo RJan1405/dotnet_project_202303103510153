@@ -1,0 +1,115 @@
+@model IEnumerable<EventTicketingSystem.Models.Event>
+
+@{
+    ViewData["Title"] = "Events";
+}
+
+<div class="container">
+    <h1 class="my-4">Upcoming Events</h1>
+    
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="card-title mb-0">@item.Title</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">@item.Description</p>
+                        <p class="card-text"><strong>Date:</strong> @item.Date.ToString("dddd, dd MMMM yyyy")</p>
+                        <p class="card-text"><strong>Price:</strong> $@item.Price.ToString("0.00")</p>
+                        
+                        <div class="countdown-timer mb-3" data-deadline="@item.RegistrationDeadline.ToString("yyyy-MM-ddTHH:mm:ss")">
+                            <p><strong>Registration closes in:</strong></p>
+                            <div class="d-flex justify-content-center">
+                                <div class="px-2 text-center">
+                                    <span class="days fw-bold fs-4">00</span>
+                                    <div class="small">Days</div>
+                                </div>
+                                <div class="px-2 text-center">
+                                    <span class="hours fw-bold fs-4">00</span>
+                                    <div class="small">Hours</div>
+                                </div>
+                                <div class="px-2 text-center">
+                                    <span class="minutes fw-bold fs-4">00</span>
+                                    <div class="small">Minutes</div>
+                                </div>
+                                <div class="px-2 text-center">
+                                    <span class="seconds fw-bold fs-4">00</span>
+                                    <div class="small">Seconds</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between align-items-center">
+                        <a asp-controller="Event" asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary">View Details</a>
+                        <a asp-controller="Registration" asp-action="Register" asp-route-id="@item.Id" class="btn btn-primary">Register</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Countdown timer functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const countdownElements = document.querySelectorAll('.countdown-timer');
+            
+            countdownElements.forEach(function(element) {
+                const deadline = new Date(element.dataset.deadline).getTime();
+                
+                const daysSpan = element.querySelector('.days');
+                const hoursSpan = element.querySelector('.hours');
+                const minutesSpan = element.querySelector('.minutes');
+                const secondsSpan = element.querySelector('.seconds');
+                
+                function updateCountdown() {
+                    const now = new Date().getTime();
+                    const distance = deadline - now;
+                    
+                    if (distance < 0) {
+                        daysSpan.textContent = '00';
+                        hoursSpan.textContent = '00';
+                        minutesSpan.textContent = '00';
+                        secondsSpan.textContent = '00';
+                        element.classList.add('text-danger');
+                        element.innerHTML = '<p class="text-danger fw-bold">Registration Closed</p>';
+                        return;
+                    }
+                    
+                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    
+                    daysSpan.textContent = days.toString().padStart(2, '0');
+                    hoursSpan.textContent = hours.toString().padStart(2, '0');
+                    minutesSpan.textContent = minutes.toString().padStart(2, '0');
+                    secondsSpan.textContent = seconds.toString().padStart(2, '0');
+                }
+                
+                updateCountdown();
+                setInterval(updateCountdown, 1000);
+            });
+        });
+    </script>
+}
