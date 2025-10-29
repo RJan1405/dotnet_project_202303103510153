@@ -35,6 +35,11 @@ Note: A SQLite DB is included (`EventTicketing.db`). You can run directly withou
 
 4) Enable PDF ticket download (optional but recommended):
 - Create the folder if it does not exist:
+
+ ```bash
+mkdir your_directory\dotnet_project_202303103510153-main\dotnet_project_202303103510153-main\wwwroot\Rotativa
+```
+-eg:
 ```bash
 mkdir "D:\event proj\EventTicketingSystem\wwwroot\Rotativa"
 ```
