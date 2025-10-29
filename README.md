@@ -69,7 +69,7 @@ Rotativa setup (already configured in `Program.cs`):
 - Update SMTP settings under `appsettings.json` → `EmailSettings`.
 - The default `EmailService` logs email content to console (no external calls).
 
-Main steps to install and run:
+##Main steps to install and run:
 ```bash
 dotnet restore
 ```
