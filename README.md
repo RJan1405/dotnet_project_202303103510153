@@ -29,10 +29,10 @@ dotnet ef database update
 ```
 Note: A SQLite DB is included (`EventTicketing.db`). You can run directly without this step.
 
-3) Enable PDF ticket download (optional but recommended):
+3) Enable PDF ticket download (recommended):
 - Create the folder if it does not exist:
 - your_directory includes your directory where u clone this project
--(Mandatory)
+- (Mandatory)
  ```bash
 mkdir "your_directory\dotnet_project_202303103510153-main\dotnet_project_202303103510153-main\wwwroot\Rotativa"
 ```
