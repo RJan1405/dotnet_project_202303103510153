@@ -29,40 +29,61 @@ dotnet ef database update
 ```
 Note: A SQLite DB is included (`EventTicketing.db`). You can run directly without this step.
 
-3) (Optional, for real email sending)
-- Update SMTP settings under `appsettings.json` → `EmailSettings`.
-- The default `EmailService` logs email content to console (no external calls).
-
-4) Enable PDF ticket download (optional but recommended):
+3) Enable PDF ticket download (optional but recommended):
 - Create the folder if it does not exist:
-
+- your_directory includes your directory where u clone this project
+-(Mandatory)
  ```bash
-mkdir your_directory\dotnet_project_202303103510153-main\dotnet_project_202303103510153-main\wwwroot\Rotativa
+mkdir "your_directory\dotnet_project_202303103510153-main\dotnet_project_202303103510153-main\wwwroot\Rotativa"
 ```
 -eg:
 ```bash
 mkdir "D:\event proj\EventTicketingSystem\wwwroot\Rotativa"
 ```
+-(optinal)
 - Download the Windows wkhtmltopdf (portable zip or installer).
 - Copy the executable into the app:
 ```bash
 Copy-Item "C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe" "D:\event proj\EventTicketingSystem\wwwroot\Rotativa\wkhtmltopdf.exe"
 ```
+-(optinal)
 If you extracted a zip to Downloads, your source may be:
 ```bash
 Copy-Item "C:\Users\YourUser\Downloads\wkhtmltox\bin\wkhtmltopdf.exe" "D:\event proj\EventTicketingSystem\wwwroot\Rotativa\wkhtmltopdf.exe"
 ```
+-(optinal)
 - Unblock the file if Windows marked it as downloaded:
 ```bash
 Unblock-File "D:\event proj\EventTicketingSystem\wwwroot\Rotativa\wkhtmltopdf.exe"
 ```
+-(optinal)
 - Verify the binary runs:
 ```bash
 & "D:\event proj\EventTicketingSystem\wwwroot\Rotativa\wkhtmltopdf.exe" --version
 ```
-
+-(optinal)
 Rotativa setup (already configured in `Program.cs`):
 - `RotativaConfiguration.Setup(app.Environment.WebRootPath);` ensures Rotativa looks under `wwwroot\Rotativa`.
+
+4) (Optional, for real email sending)
+- Update SMTP settings under `appsettings.json` → `EmailSettings`.
+- The default `EmailService` logs email content to console (no external calls).
+
+Main steps to install and run:
+```bash
+dotnet restore
+```
+```bash
+dotnet ef database update
+```
+ ```bash
+mkdir "your_directory\dotnet_project_202303103510153-main\dotnet_project_202303103510153-main\wwwroot\Rotativa"
+```
+-eg:
+```bash
+mkdir "D:\event proj\EventTicketingSystem\wwwroot\Rotativa"
+```
+
 
 ## How To Run
 1) Build:
