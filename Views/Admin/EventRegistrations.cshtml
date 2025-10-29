@@ -1,0 +1,46 @@
+@model IEnumerable<EventTicketingSystem.Models.Registration>
+@{
+    ViewData["Title"] = "Event Registrations";
+}
+<div class="container mt-4">
+    <h2>@ViewBag.EventTitle - Registrations</h2>
+    <p>Event Date: @((DateTime)ViewBag.EventDate).ToString("yyyy-MM-dd")</p>
+    <p>Total Registrations: @ViewBag.TotalRegistrations</p>
+
+    <div class="mb-3">
+        <div class="btn-group" role="group">
+            <a class="btn btn-outline-primary" href="@Url.Action("ExportPdf", new { eventId = ViewBag.EventId })">
+                📄 Download PDF
+            </a>
+            <a class="btn btn-outline-success" href="@Url.Action("ExportExcel", new { eventId = ViewBag.EventId })">
+                📊 Download Excel
+            </a>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Payment Status</th>
+                    <th>Transaction ID</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.User.Name</td>
+                    <td>@item.User.Email</td>
+                    <td>@(item.User.PhoneNumber ?? "N/A")</td>
+                    <td>@item.PaymentStatus</td>
+                    <td>@(string.IsNullOrEmpty(item.TransactionId) ? "N/A" : item.TransactionId)</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

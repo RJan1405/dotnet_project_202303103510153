@@ -1,0 +1,56 @@
+@model IEnumerable<EventTicketingSystem.Models.Registration>
+@{
+    ViewData["Title"] = "My Tickets";
+}
+
+<h1>My Tickets</h1>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        You haven't registered for any events yet. <a asp-controller="Event" asp-action="Index">Browse available events</a>.
+    </div>
+}
+else
+{
+    <div class="row">
+        @foreach (var registration in Model)
+        {
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">@registration.Event.Title</h5>
+                    </div>
+                    <div class="card-body">
+                        <p><i class="bi bi-calendar"></i> <strong>Date:</strong> @registration.Event.Date.ToString("dddd, dd MMMM yyyy")</p>
+                        <p><i class="bi bi-clock"></i> <strong>Time:</strong> @registration.Event.Date.ToString("h:mm tt")</p>
+                        <p>
+                            <i class="bi bi-credit-card"></i> <strong>Payment Status:</strong>
+                            @if (registration.PaymentStatus == "Success")
+                            {
+                                <span class="badge bg-success">Paid</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-warning text-dark">Pending</span>
+                            }
+                        </p>
+                        @if (registration.PaymentStatus == "Success")
+                        {
+                            <p><i class="bi bi-upc"></i> <strong>Transaction ID:</strong> @registration.TransactionId</p>
+                            <a asp-controller="Registration" asp-action="SendConfirmationEmail" asp-route-registrationId="@registration.Id" class="btn btn-outline-primary">
+                                <i class="bi bi-envelope"></i> Send Confirmation Email
+                            </a>
+                        }
+                        else
+                        {
+                            <a asp-controller="Payment" asp-action="Process" asp-route-orderId="ORDER_@registration.Id" asp-route-amount="@registration.Event.Price" class="btn btn-warning">
+                                Complete Payment
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

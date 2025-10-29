@@ -1,0 +1,60 @@
+@model EventTicketingSystem.Models.Registration
+
+@{
+    ViewData["Title"] = "Payment";
+}
+
+<div class="container">
+    <h1 class="my-4">Complete Payment</h1>
+    
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card shadow mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Event Details</h5>
+                </div>
+                <div class="card-body">
+                    <h4>@Model.Event.Title</h4>
+                    <p>@Model.Event.Description</p>
+                    <p><strong>Date:</strong> @Model.Event.Date.ToString("dddd, dd MMMM yyyy")</p>
+                    <p><strong>Price:</strong> $@Model.Event.Price.ToString("0.00")</p>
+                </div>
+            </div>
+            
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Payment Information</h5>
+                </div>
+                <div class="card-body">
+                    <p class="alert alert-info">
+                        <i class="bi bi-info-circle"></i> This is a demo payment page. No actual payment will be processed.
+                    </p>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Card Number</label>
+                        <input type="text" class="form-control" value="4111 1111 1111 1111" readonly />
+                        <small class="text-muted">Demo card number</small>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Expiry Date</label>
+                            <input type="text" class="form-control" value="12/25" readonly />
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">CVV</label>
+                            <input type="text" class="form-control" value="123" readonly />
+                        </div>
+                    </div>
+                    
+                    <form asp-action="ConfirmPayment" asp-route-id="@Model.Id" method="post">
+                        <input type="hidden" name="transactionId" value="@Guid.NewGuid().ToString()" />
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success btn-lg">Pay $@Model.Event.Price.ToString("0.00")</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

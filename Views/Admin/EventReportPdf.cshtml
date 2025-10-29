@@ -1,0 +1,50 @@
+@model IEnumerable<EventTicketingSystem.Models.Registration>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Event Registration Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; margin-bottom: 4px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+        th, td { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; font-size: 12px; }
+        th { background-color: #f2f2f2; }
+        .header { margin-bottom: 14px; font-size: 13px; }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>@ViewBag.EventTitle - Registration Report</h1>
+    <div>Date: @((DateTime)ViewBag.EventDate).ToString("yyyy-MM-dd")</div>
+    <div>Total Registrations: @ViewBag.TotalRegistrations</div>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>User Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Payment Status</th>
+        <th>Transaction ID</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.User.Name</td>
+            <td>@item.User.Email</td>
+            <td>@(item.User.PhoneNumber ?? "N/A")</td>
+            <td>@item.PaymentStatus</td>
+            <td>@(string.IsNullOrEmpty(item.TransactionId) ? "N/A" : item.TransactionId)</td>
+        </tr>
+    }
+    </tbody>
+</table>
+</body>
+</html>
