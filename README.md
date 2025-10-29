@@ -40,7 +40,7 @@ Note: A SQLite DB is included (`EventTicketing.db`). You can run directly withou
 - Create the folder if it does not exist:
 
 - (Mandatory)
-  mkdir "wwwroot\Rotativa"
+-  Inside your project of dotnet_project_202303103510153 run this command
  ```bash
 mkdir "wwwroot\Rotativa"
 ```
