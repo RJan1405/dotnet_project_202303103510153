@@ -1,5 +1,12 @@
 # Event Ticketing System
 
+## Index
+#### 1)Description
+#### 2)Prerequisites
+#### 3)Installation
+#### 4)ScreenShots
+
+
 ## Description
 A modern ASP.NET Core MVC application for discovering events, registering seamlessly, and receiving ticket emails. It features:
 - Light/Dark theme with smooth transitions and glass morphism
@@ -119,5 +126,67 @@ dotnet run
 - For real payments, swap the demo `PaymentService` with a gateway (e.g., Razorpay).
 
 ## SCREENSHOTS
--Signup Page
-![App Screenshot](Screenshot/PAYMENT.png)
+- Signup Page.
+  
+![image_alt](https://github.com/RJan1405/dotnet_project_202303103510153/blob/24773a78f585da663e3c26123c3a50fe934f7ffc/Screenshot/REGISTER%20PAGE.png)
+
+- Login Page.
+  
+![image_alt](https://github.com/RJan1405/dotnet_project_202303103510153/blob/24773a78f585da663e3c26123c3a50fe934f7ffc/Screenshot/LOGIN%20PAGE.png)
+
+- Home Page.
+  
+![image_alt](https://github.com/RJan1405/dotnet_project_202303103510153/blob/24773a78f585da663e3c26123c3a50fe934f7ffc/Screenshot/HOME%20PAGE.png)
+
+
+# Admin Panel
+
+- Creating Event.
+  
+![image_alt](https://github.com/RJan1405/dotnet_project_202303103510153/blob/24773a78f585da663e3c26123c3a50fe934f7ffc/Screenshot/EVENT%20CREATION.png)
+
+- Admin Page.
+  
+![image_alt](https://github.com/RJan1405/dotnet_project_202303103510153/blob/24773a78f585da663e3c26123c3a50fe934f7ffc/Screenshot/ADMIN%20PANEL.png)
+
+- Registerd User.
+  
+![image_alt](https://github.com/RJan1405/dotnet_project_202303103510153/blob/ec9a5abf4e910d92725fc88970feecc3b748643b/Screenshot/registered%20user.png)
+
+
+# User Panel
+
+- Event Page.
+  
+![image_alt](https://github.com/RJan1405/dotnet_project_202303103510153/blob/ec9a5abf4e910d92725fc88970feecc3b748643b/Screenshot/EVENT%20PAGE.png)
+
+- Event Registration.
+ 
+![image_alt](https://github.com/RJan1405/dotnet_project_202303103510153/blob/ec9a5abf4e910d92725fc88970feecc3b748643b/Screenshot/RESGISTER%201.png)
+
+- Payment.
+  
+![image_alt](https://github.com/RJan1405/dotnet_project_202303103510153/blob/ec9a5abf4e910d92725fc88970feecc3b748643b/Screenshot/PAYMENT%20.png)
+
+- Payment Successful.
+  
+![image_alt](https://github.com/RJan1405/dotnet_project_202303103510153/blob/ec9a5abf4e910d92725fc88970feecc3b748643b/Screenshot/PAYMENT%20SUCCESFUL.png)
+
+- My Tickets & Send conformation.
+  
+![image_alt](https://github.com/RJan1405/dotnet_project_202303103510153/blob/ec9a5abf4e910d92725fc88970feecc3b748643b/Screenshot/TICKET%20VIEW%20AND%20SENDING%20CONFORMATION.png)
+
+- Mail Inbox .
+  
+![image_alt](https://github.com/RJan1405/dotnet_project_202303103510153/blob/ec9a5abf4e910d92725fc88970feecc3b748643b/Screenshot/MAIL%20INBOX%20DOWNLAOD%20OR%20PRINT%20TICKET.png)
+
+- Ticket view.
+  
+![image_alt](https://github.com/RJan1405/dotnet_project_202303103510153/blob/ec9a5abf4e910d92725fc88970feecc3b748643b/Screenshot/YOUR%20TICKET.png)
+
+- Download Ticket.
+  
+![image_alt](https://github.com/RJan1405/dotnet_project_202303103510153/blob/ec9a5abf4e910d92725fc88970feecc3b748643b/Screenshot/PRINTING%20TICKET.png)
+
+
+
