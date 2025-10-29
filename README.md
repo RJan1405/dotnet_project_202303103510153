@@ -117,3 +117,7 @@ dotnet run
 - If `wkhtmltopdf.exe` is missing, “Download Ticket” gracefully falls back to the HTML view to avoid crashes.
 - Theme toggle respects system preferences and persists your choice.
 - For real payments, swap the demo `PaymentService` with a gateway (e.g., Razorpay).
+
+## SCREENSHOTS
+-Signup Page
+![App Screenshot](Screenshot/PAYMENT.png)
